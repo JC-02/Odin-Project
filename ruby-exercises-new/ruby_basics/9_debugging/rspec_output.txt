@@ -1,0 +1,72 @@
+
+Debugging Exercises
+  decrement_smallest_value
+    Returns 0 after you use the stack trace to find and fix the error (FAILED - 1)
+  increment_greatest_value
+    Returns 5 after you use the stack trace to find and fix the error (FAILED - 2)
+  isogram
+    Returns true after you use puts to fix the method, since Odin is an isogram (FAILED - 3)
+  yell_greeting
+    Returns "WASSAP, BOB!" after you use pry-byebug to fix the method (FAILED - 4)
+
+Failures:
+
+  1) Debugging Exercises decrement_smallest_value Returns 0 after you use the stack trace to find and fix the error
+     Failure/Error: smallest_value_decremented = decrement_smallest_value(nested_array)
+
+     NameError:
+       undefined local variable or method 'current_valu' for #<RSpec::ExampleGroups::DebuggingExercises::DecrementSmallestValue:0x000001e60df96718>
+     # ./exercises/debugging_exercises.rb:13:in 'block (2 levels) in Object#decrement_smallest_value'
+     # ./exercises/debugging_exercises.rb:11:in 'Array#each'
+     # ./exercises/debugging_exercises.rb:11:in 'block in Object#decrement_smallest_value'
+     # ./exercises/debugging_exercises.rb:10:in 'Array#each'
+     # ./exercises/debugging_exercises.rb:10:in 'Object#decrement_smallest_value'
+     # ./spec/debugging_exercises_spec.rb:11:in 'block (3 levels) in <top (required)>'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in 'Kernel#load'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in '<main>'
+
+  2) Debugging Exercises increment_greatest_value Returns 5 after you use the stack trace to find and fix the error
+     Failure/Error: greatest_value_incremented = increment_greatest_value(nested_array)
+
+     ArgumentError:
+       comparison of Integer with nil failed
+     # ./exercises/debugging_exercises.rb:27:in 'Integer#<'
+     # ./exercises/debugging_exercises.rb:27:in 'block (2 levels) in Object#increment_greatest_value'
+     # ./exercises/debugging_exercises.rb:26:in 'Array#each'
+     # ./exercises/debugging_exercises.rb:26:in 'block in Object#increment_greatest_value'
+     # ./exercises/debugging_exercises.rb:25:in 'Array#each'
+     # ./exercises/debugging_exercises.rb:25:in 'Object#increment_greatest_value'
+     # ./spec/debugging_exercises_spec.rb:23:in 'block (3 levels) in <top (required)>'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in 'Kernel#load'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in '<main>'
+
+  3) Debugging Exercises isogram Returns true after you use puts to fix the method, since Odin is an isogram
+     Failure/Error: expect(isogram?("Odin")).to be true
+
+       expected true
+            got false
+     # ./spec/debugging_exercises_spec.rb:34:in 'block (3 levels) in <top (required)>'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in 'Kernel#load'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in '<main>'
+
+  4) Debugging Exercises yell_greeting Returns "WASSAP, BOB!" after you use pry-byebug to fix the method
+     Failure/Error: expect(yell_greeting("Bob")).to eq("WASSAP, BOB!")
+
+       expected: "WASSAP, BOB!"
+            got: "WASSAP, bob!"
+
+       (compared using ==)
+     # ./spec/debugging_exercises_spec.rb:43:in 'block (3 levels) in <top (required)>'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in 'Kernel#load'
+     # C:/Users/drumm/AppData/Local/Microsoft/WindowsApps/rspec:36:in '<main>'
+
+Finished in 0.02075 seconds (files took 0.22762 seconds to load)
+4 examples, 4 failures
+
+Failed examples:
+
+rspec ./spec/debugging_exercises_spec.rb:8 # Debugging Exercises decrement_smallest_value Returns 0 after you use the stack trace to find and fix the error
+rspec ./spec/debugging_exercises_spec.rb:20 # Debugging Exercises increment_greatest_value Returns 5 after you use the stack trace to find and fix the error
+rspec ./spec/debugging_exercises_spec.rb:32 # Debugging Exercises isogram Returns true after you use puts to fix the method, since Odin is an isogram
+rspec ./spec/debugging_exercises_spec.rb:41 # Debugging Exercises yell_greeting Returns "WASSAP, BOB!" after you use pry-byebug to fix the method
+
