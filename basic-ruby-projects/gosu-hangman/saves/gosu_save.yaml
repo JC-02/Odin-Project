@@ -1,0 +1,15 @@
+--- !ruby/object:HangmanWindow
+__swigtype__: _p_Gosu__Window
+font: !ruby/object:Gosu::Font
+  __swigtype__: _p_Gosu__Font
+small_font: !ruby/object:Gosu::Font
+  __swigtype__: _p_Gosu__Font
+large_font: !ruby/object:Gosu::Font
+  __swigtype__: _p_Gosu__Font
+word: budapest
+correct_guesses:
+- a
+- s
+incorrect_guesses: []
+game_status: :playing
+message: 'Correct: ''S''!'
