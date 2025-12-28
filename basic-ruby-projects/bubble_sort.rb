@@ -1,8 +1,6 @@
 def bubble_sort(array)
   # Error Handling: Ensure input is an array
-  unless array.is_a?(Array)
-    raise ArgumentError, "Expected an Array, but got #{array.class}"
-  end
+  raise ArgumentError, "Expected an Array, but got #{array.class}" unless array.is_a?(Array)
 
   n = array.length
   return array if n <= 1
@@ -13,17 +11,16 @@ def bubble_sort(array)
 
   loop do
     swapped = false
-    
+
     last_index.times do |i|
       # Error Handling: Ensure elements are comparable
-      begin
-        if array[i] > array[i + 1]
-          array[i], array[i + 1] = array[i + 1], array[i]
-          swapped = true
-        end
-      rescue StandardError => e
-        raise TypeError, "Elements in array must be comparable: #{e.message}"
+
+      if array[i] > array[i + 1]
+        array[i], array[i + 1] = array[i + 1], array[i]
+        swapped = true
       end
+    rescue StandardError => e
+      raise TypeError, "Elements in array must be comparable: #{e.message}"
     end
 
     # Yield current state for methodology verification if block is provided
@@ -31,7 +28,7 @@ def bubble_sort(array)
 
     # Optimization
     last_index -= 1
-    
+
     break if !swapped || last_index <= 0
   end
   array
@@ -50,7 +47,7 @@ end
 
 def test_suite
   puts "\n--- BUBBLE SORT COMPREHENSIVE TEST SUITE ---\n"
-  
+
   total = 0
   passed = 0
 
@@ -69,13 +66,13 @@ def test_suite
   # 2. Edge Cases
   puts "\n[2] Edge Cases"
   edge_cases = [
-    { name: "Empty Array", in: [], out: [] },
-    { name: "Single Element", in: [1], out: [1] },
-    { name: "Negative Numbers", in: [-5, 2, -1, 0, 10], out: [-5, -1, 0, 2, 10] },
-    { name: "All Identical", in: [5, 5, 5], out: [5, 5, 5] },
-    { name: "Large Numbers", in: [999999, 1, 500], out: [1, 500, 999999] },
-    { name: "Already Sorted", in: (1..10).to_a, out: (1..10).to_a },
-    { name: "Reverse Sorted", in: (1..10).to_a.reverse, out: (1..10).to_a }
+    { name: 'Empty Array', in: [], out: [] },
+    { name: 'Single Element', in: [1], out: [1] },
+    { name: 'Negative Numbers', in: [-5, 2, -1, 0, 10], out: [-5, -1, 0, 2, 10] },
+    { name: 'All Identical', in: [5, 5, 5], out: [5, 5, 5] },
+    { name: 'Large Numbers', in: [999_999, 1, 500], out: [1, 500, 999_999] },
+    { name: 'Already Sorted', in: (1..10).to_a, out: (1..10).to_a },
+    { name: 'Reverse Sorted', in: (1..10).to_a.reverse, out: (1..10).to_a }
   ]
   edge_cases.each do |c|
     total += 1
@@ -94,11 +91,11 @@ def test_suite
   ]
   actual_steps = []
   bubble_sort(sample.dup) { |state| actual_steps << state }
-  
-  # Note: Depending on optimization, the number of steps might vary.
+
+  # NOTE: Depending on optimization, the number of steps might vary.
   # Our implementation reduces the range, so we expect the steps.
   if actual_steps.first == expected_steps.first
-    puts "✅ Methodology check: First pass correctly bubbled largest element to end."
+    puts '✅ Methodology check: First pass correctly bubbled largest element to end.'
     passed += 1
   else
     puts "❌ Methodology check failed: Found #{actual_steps[0]}, expected #{expected_steps[0]}"
@@ -106,12 +103,12 @@ def test_suite
 
   # 4. Error Handling
   puts "\n[4] Error Handling"
-  
+
   # Type Error: Not an array
   total += 1
   begin
-    bubble_sort("not an array")
-    puts "❌ FAILED: Did not raise ArgumentError for string input"
+    bubble_sort('not an array')
+    puts '❌ FAILED: Did not raise ArgumentError for string input'
   rescue ArgumentError => e
     puts "✅ PASSED: Caught ArgumentError for invalid input: #{e.message}"
     passed += 1
@@ -120,8 +117,8 @@ def test_suite
   # Type Error: Uncomparable elements
   total += 1
   begin
-    bubble_sort([1, "string", 3])
-    puts "❌ FAILED: Did not raise TypeError for uncomparable elements"
+    bubble_sort([1, 'string', 3])
+    puts '❌ FAILED: Did not raise TypeError for uncomparable elements'
   rescue TypeError => e
     puts "✅ PASSED: Caught TypeError for mixed types: #{e.message}"
     passed += 1
@@ -131,9 +128,9 @@ def test_suite
   total += 1
   begin
     bubble_sort(nil)
-    puts "❌ FAILED: Did not raise ArgumentError for nil"
+    puts '❌ FAILED: Did not raise ArgumentError for nil'
   rescue ArgumentError
-    puts "✅ PASSED: Caught ArgumentError for nil"
+    puts '✅ PASSED: Caught ArgumentError for nil'
     passed += 1
   end
 
@@ -143,10 +140,10 @@ def test_suite
   large_array = Array.new(100) { rand(-1000..1000) }
   result = bubble_sort(large_array.dup)
   if result == large_array.sort
-    puts "✅ PASSED: Sorted 100 random integers correctly."
+    puts '✅ PASSED: Sorted 100 random integers correctly.'
     passed += 1
   else
-    puts "❌ FAILED: Large array sorting failed."
+    puts '❌ FAILED: Large array sorting failed.'
   end
 
   puts "\n--- SUMMARY ---"
@@ -154,6 +151,4 @@ def test_suite
   exit(passed == total ? 0 : 1)
 end
 
-if __FILE__ == $0
-  test_suite
-end
+test_suite if __FILE__ == $0
